@@ -1,45 +1,179 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TIME TRAVELER | 2000s</title>
+<title>YouTube Comments as Art - The New Yorker</title>
+<style type="text/css">
 
-	<link rel="stylesheet" href="style.css">
+body {
+    background-color: #DDD;
+    color: #333;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+#container {
+    width: 700px;
+    margin: 0 auto;
+    background: #FFF;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.title-bar {
+    background: linear-gradient(to bottom, #6D84A2, #3B5998);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.content {
+    padding: 15px;
+    line-height: 1.5;
+}
+
+.quote-box {
+    background-color: #F5F5F5;
+    border-left: 4px solid #6D84A2;
+    padding: 10px;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+.comment {
+    background-color: #F0F7FF;
+    border: 1px solid #D1E0F0;
+    padding: 8px 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.section-title {
+    color: #3B5998;
+    border-bottom: 1px solid #D1E0F0;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+.favorites {
+    background-color: #F5F5F5;
+    border: 1px solid #DDD;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.select-box {
+    background-color: white;
+    border: 1px solid #999;
+    padding: 5px;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+    border-radius: 4px;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.button {
+    background: linear-gradient(to bottom, #F9F9F9, #E0E0E0);
+    border: 1px solid #999;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+}
+
+.button:hover {
+    background: linear-gradient(to bottom, #E0E0E0, #D0D0D0);
+}
+
+.marquee {
+    background-color: #3B5998;
+    color: white;
+    padding: 8px;
+    border-radius: 0 0 8px 8px;
+    margin-top: 20px;
+    font-size: 12px;
+}
+</style>
+<script type="text/javascript">
+function toggleComment(id) {
+    var el = document.getElementById(id);
+    if (el.style.display == 'none') {
+        el.style.display = 'block';
+    } else {
+        el.style.display = 'none';
+    }
+}
+</script>
 </head>
 <body>
-	<nav>
-		<a href="../">Home</a>
-		<a href="../1990s">1990s</a>
-		<a href="./">2000s</a>
-		<a href="../2010s">2010s</a>
-		<a href="" target="_blank">Original article</a>
-		<a href="https://github.com/gabrieldrozdov/time-traveler" target="_blank">GitHub repository (update with your repository)</a>
-	</nav>
 
-	<h1>Welcome to the 2000s!</h1>
+<div id="container">
+    <div class="title-bar">TURNING YOUTUBE COMMENTS INTO ART</div>
+    
+    <div class="content">
+        <p><i>By Max Norman | November 23, 2022</i></p>
+        
+        <p>Chiara Amisola took a close look at the stories and revelations that people leave below online videos.</p>
+        
+        <p>If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt. It's our externalized memory—in the never-fading photographs on Instagram or Facebook, in the dangerously searchable chats, the indelible e-mails, or in our improbably granular Uber and Venmo histories.</p>
+        
+        <div class="quote-box">
+            "The YouTube comments section is 'one of the last sacred spaces of the internet.' In contrast to the hypercuration of the social-media profile, anything goes in the comments." — Chiara Amisola
+        </div>
+        
+        <h3 class="section-title">ART PROJECT: THE SOUND OF LOVE</h3>
+        
+        <p>Thesoundof.love, a "web experience" Amisola created this past Valentine's Day, explores "the rawness of human intimacy and confession in the YouTube comments left under love songs." The page is minimal: each comment appears in large black text above the video in question, which plays inside a small circle that rotates like an LP.</p>
+        
+        <h3 class="section-title">NOTABLE COMMENTS</h3>
+        
+        <a href="javascript:toggleComment('comment1')" class="button">Show Comment 1</a>
+        <div id="comment1" class="comment" style="display:none">
+            "Now I'm on the other side guys, love is beautiful," reads one comment, on "Poison Oak," by Bright Eyes.
+        </div>
+        
+        <a href="javascript:toggleComment('comment2')" class="button">Show Comment 2</a>
+        <div id="comment2" class="comment" style="display:none">
+            "sitting in Union Station at the end of summer and realizing that everything is going to change very soon," on "Friendships and Love," by Rocketship.
+        </div>
+        
+        <a href="javascript:toggleComment('comment3')" class="button">Show Comment 3</a>
+        <div id="comment3" class="comment" style="display:none">
+            "The same guy who has loved me since I was 16 years old dedicated this song to me. I'm 43 now and no one will ever love me or understand me the way he does," someone writes about "Pictures of You," by the Cure.
+        </div>
+        
+        <h3 class="section-title">THE PHILOSOPHY BEHIND IT</h3>
+        
+        <p>The Internet's archives of human emotion prove the grand community of experience on a scale that, even a couple of generations ago, was unthinkable: even in the far reaches of YouTube comments, the most throwaway of online forms, we can find a record of the millions of private memories and feelings that flood our world like invisible radio waves.</p>
+        
+        <div class="favorites">
+            <h3>NEW YORKER FAVORITES</h3>
+            <select class="select-box">
+                <option>-- Select an Article --</option>
+                <option>The luxury liner that sailed into a hurricane</option>
+                <option>A professor claimed to be Native American. Did she know she wasn't?</option>
+                <option>Kanye West bought an architectural treasure—then gave it a violent remix</option>
+            </select>
+            <p>
+                <input type="radio" name="rating" id="rate1"><label for="rate1">1</label>
+                <input type="radio" name="rating" id="rate2"><label for="rate2">2</label>
+                <input type="radio" name="rating" id="rate3"><label for="rate3">3</label>
+                <input type="radio" name="rating" id="rate4"><label for="rate4">4</label>
+                <input type="radio" name="rating" id="rate5"><label for="rate5">5</label>
+            </p>
+        </div>
+        
+        <div class="marquee">
+            "YouTube comments are the folk art of our time" • Last Updated: <script>document.write(new Date().toLocaleDateString());</script>
+        </div>
+    </div>
+</div>
 
-	<p>
-		Welcome to an era of the Internet defined by sites with web-safe fonts and colors, ridiculous layouts, and images that act as buttons. It’s the era of <a href="https://en.wikipedia.org/wiki/GeoCities" target="_blank">GeoCities</a>. It’s the wild west.
-	</p>
-
-	<img src="assets/cowboy.gif" width="400">
-
-	<p>
-		So, we can finally start styling websites using CSS. This means we can style <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_text" target="_blank">text</a>. We can also make use of the <a href="https://www.w3schools.com/css/css_boxmodel.asp">box model</a> for all elements. And we can even break the flow of a site using <a href="https://css-tricks.com/absolute-positioning-inside-relative-positioning/" target="_blank">absolute positioning</a>.
-	</p>
-
-	<p>
-		<a href="https://jgthms.com/web-design-in-4-minutes/">Follow this guide</a> to learn how to create a “pleasing” web layout evocative of this era.
-	</p>
-
-	<h2>Examples of sites that are evocative this era:</h2>
-	<ul>
-		<li><a href="https://geocities.restorativland.org/" target="_blank">The Geocities Gallery</a></li>
-		<li><a href="https://www.theverge.com/c/24247055/2004-tech-internet-gadgets-phones-pop-culture" target="_blank">2004 was the first year of the future</a></li>
-		<li><a href="https://www.cbpm.org/" target="_blank">The Collective Black People Movement</a></li>
-		<li><a href="https://luckysoap.com/statements/handmadeweb.html" target="_blank">A Handmade Web</a></li>
-		<li><a href="https://web.archive.org/web/20060301000255/http://www.apple.com/" target="_blank">apple.com from 2006</a></li>
-	</ul>
 </body>
 </html>
