@@ -15,12 +15,26 @@ function showFavorite(selection) {
   }
 </style>
 </head>
-<body bgcolor="#000000" text="#FFFFFF" link="#FFFFFF" vlink="#CCCCCC">
+<body bgcolor="#FFFFFF" text="#000000" link="#000000" vlink="#333333">
 
 <table width="600" border="0" align="center" cellpadding="10">
   <tr>
     <td>
-      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#FFFFFF">
+      <!-- Added navigation menu -->
+      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#000000" style="margin-bottom:10px">
+        <tr>
+          <td align="center">
+            <font face="monospace" size="2">
+              <a href="../index.html">Home</a> | 
+              <a href="../1990s/index.html">1990</a> | 
+              <a href="../2000s/index.html">2000</a> | 
+              <a href="../2010s/index.html">2010</a>
+            </font>
+          </td>
+        </tr>
+      </table>
+
+      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#000000">
         <tr>
           <td>
             <font face="monospace" size="5"><b>TURNING YOUTUBE COMMENTS INTO ART</b></font><br>
@@ -37,7 +51,7 @@ function showFavorite(selection) {
       If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt. It's our externalized memory—in the never-fading photographs on Instagram or Facebook, in the dangerously searchable chats, the indelible e-mails, or in our improbably granular Uber and Venmo histories. Our memory also lives, in part, on YouTube: every movie scene you've ever watched; every historical event you've ever (or never) witnessed; tours of every place you've ever visited; and recordings of every song you've ever listened to, or cried to, or loved to. But the thing about a shared memory is that it's not just yours—though you may recall it on your own, so can anyone else. And they leave comments.
       </font></p>
 
-      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#FFFFFF">
+      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#000000">
         <tr>
           <td>
             <details>
@@ -54,7 +68,7 @@ function showFavorite(selection) {
       Amisola is fascinated by the commenters who, as she puts it, "gush out stories (real or fake?) about falling in love, being saved, or just tripping madly to some low qual upload of a post-rock song." Clicking on a song uploaded more than a decade ago, you end up falling down a rabbit hole—or hundreds of rabbit holes—if you take a look at the archive of feeling that unfurls beneath the video, like some mixture of bathroom-wall graffiti and Talmudic commentary.
       </font></p>
 
-      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#FFFFFF" style="margin-top:10px">
+      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#000000" style="margin-top:10px">
         <tr>
           <td>
             <font face="monospace" size="3"><b>ART PROJECT: THE SOUND OF LOVE</b></font><br>
@@ -67,7 +81,7 @@ function showFavorite(selection) {
         </tr>
       </table>
 
-      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#FFFFFF" style="margin-top:10px">
+      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#000000" style="margin-top:10px">
         <tr>
           <td>
             <font face="monospace" size="3"><b>NOTABLE COMMENTS</b></font><br>
@@ -111,7 +125,7 @@ function showFavorite(selection) {
         </tr>
       </table>
 
-      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#FFFFFF" style="margin-top:10px">
+      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#000000" style="margin-top:10px">
         <tr>
           <td>
             <font face="monospace" size="3"><b>THE PHILOSOPHY BEHIND IT</b></font><br>
@@ -128,7 +142,7 @@ function showFavorite(selection) {
       <a href="#">Back to Top</a> | <a href="mailto:reader@example.com">Email the Author</a>
       </font></p>
 
-      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#FFFFFF" style="margin-top:15px">
+      <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#000000" style="margin-top:15px">
         <tr>
           <td>
             <font face="monospace" size="3"><b>NEW YORKER FAVORITES</b></font><br><br>
@@ -136,7 +150,7 @@ function showFavorite(selection) {
             <font face="monospace" size="2"><i>Select an article from the dropdown below</i></font><br>
             
             <select onChange="showFavorite(this.options[this.selectedIndex].value)" 
-                    style="font-family:monospace; background:#000000; color:#FFFFFF; border:1px solid #FFFFFF; margin-top:5px">
+                    style="font-family:monospace; background:#FFFFFF; color:#000000; border:1px solid #000000; margin-top:5px">
               <option value="">-- Select an Article --</option>
               <option value="The luxury liner that sailed into a hurricane">1. Luxury Liner in Hurricane</option>
               <option value="A professor claimed to be Native American. Did she know she wasn't?">2. Native Identity Question</option>

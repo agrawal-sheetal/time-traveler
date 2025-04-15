@@ -1,58 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TIME TRAVELER | 2010s</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Comments as Art - Modern Design</title>
+    <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #555;
+            --light-gray: #f5f5f5;
+            --medium-gray: #ddd;
+            --dark-gray: #888;
+            --white: #fff;
+            --black: #000;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--light-gray);
+            padding: 20px;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header"
+                "nav"
+                "main"
+                "footer";
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            grid-area: header;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        nav {
+            grid-area: nav;
+            background: var(--secondary-color);
+            border-radius: 8px;
+        }
+        
+        main {
+            grid-area: main;
+            display: grid;
+            gap: 20px;
+        }
+        
+        footer {
+            grid-area: footer;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            padding: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links li {
+            margin: 0 10px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--dark-gray);
+        }
+        
+        .content-block {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--medium-gray);
+        }
+        
+        .content-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left-color: var(--primary-color);
+        }
+        
+        .quote {
+            background: var(--light-gray);
+            border-left: 4px solid var(--dark-gray);
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .comment-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .comment-slider.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .comment-container {
+            background: var(--white);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .comment-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .comment-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .comment-indicator {
+            width: 12px;
+            height: 12px;
+            background: var(--medium-gray);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .comment-indicator.active {
+            background: var(--primary-color);
+        }
+        
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .rating-options {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        @media (min-width: 768px) {
+            main {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .wide-block {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            main {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .wide-block {
+                grid-column: span 3;
+            }
+        }
+    </style>
 </head>
 <body>
-	<nav>
-		<a href="../">Home</a>
-		<a href="../1990s">1990s</a>
-		<a href="../2000s">2000s</a>
-		<a href="./">2010s</a>
-		<a href="" target="_blank">Original article</a>
-		<a href="https://github.com/gabrieldrozdov/time-traveler" target="_blank">GitHub repository (update with your repository)</a>
-	</nav>
-
-	<h1>Welcome to the 2010s!</h1>
-
-	<button onclick="toggleContent();">The 2010s? What’s that like?</button>
-
-	<div id="content" class="hidden">
-		<p>
-			This is an era where the Internet becomes everything. It takes on new functions and allows layouts that appease our every want and need. Perhaps by now, we’ve had <em>too</em> much Internet.
-		</p>
-
-		<p>
-			Here’s what sites have now:
-		</p>
-
-		<ul>
-			<li>Advanced layouts using <a href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/" target="_blank">flexbox</a> and <a href="https://www.joshwcomeau.com/css/interactive-guide-to-grid/" target="_blank">CSS grid</a>.</li>
-			<li><a href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp" target="_blank">Media queries</a> that let us create responsive mobile layouts.</li>
-			<li><a href="https://www.w3schools.com/cssref/atrule_font-face.php" target="_blank">Custom fonts.</a></li>
-			<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings" target="_blank">Variable fonts!.</a></li>
-			<li>All the wonders that JavaScript brings.</li>
-		</ul>
-
-		<p>
-			For this version of the site, <em>you may NOT use absolute positioning!</em>
-		</p>
-
-		<p>
-			If flexbox is confusing, try playing <a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy</a>. If CSS Grid is confusing, try playing <a href="https://cssgridgarden.com/" target="_blank">Grid Garden</a>.
-		</p>
-
-		<h2>Examples of sites that are evocative this era:</h2>
-		<ul>
-			<li><a href="https://www.apple.com/" target="_blank">Apple</a></li>
-			<li><a href="https://www.reddit.com/" target="_blank">Reddit</a></li>
-			<li><a href="https://www.nytimes.com/" target="_blank">New York Times</a></li>
-		</ul>
-	</div>
-
-	<script src="script.js"></script>
+    <div class="container">
+        <header>
+            <h1>YouTube Comments as Art</h1>
+        </header>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../1990s/index.html">1990</a></li>
+                <li><a href="../2000s/index.html">2000</a></li>
+                <li><a href="../2010s/index.html">2010</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <article class="content-block">
+                <h3>By Max Norman | November 23, 2022</h3>
+                <p>Chiara Amisola took a close look at the stories and revelations that people leave below online videos. If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt.</p>
+            </article>
+            
+            <article class="content-block quote">
+                <p>"The YouTube comments section is 'one of the last sacred spaces of the internet.' In contrast to the hypercuration of the social-media profile, anything goes in the comments." — Chiara Amisola</p>
+            </article>
+            
+            <article class="content-block wide-block">
+                <h3>ART PROJECT: THE SOUND OF LOVE</h3>
+                <p>Thesoundof.love, a "web experience" Amisola created this past Valentine's Day, explores "the rawness of human intimacy and confession in the YouTube comments left under love songs." The page is minimal: each comment appears in large black text above the video in question, which plays inside a small circle that rotates like an LP.</p>
+            </article>
+            
+            <article class="content-block">
+                <h3>NOTABLE COMMENTS</h3>
+                <button id="viewCommentsBtn">View Comments</button>
+            </article>
+            
+            <article class="content-block wide-block">
+                <h3>THE PHILOSOPHY BEHIND IT</h3>
+                <p>The Internet's archives of human emotion prove the grand community of experience on a scale that, even a couple of generations ago, was unthinkable: even in the far reaches of YouTube comments, the most throwaway of online forms, we can find a record of the millions of private memories and feelings that flood our world like invisible radio waves.</p>
+            </article>
+            
+            <article class="content-block">
+                <h3>NEW YORKER FAVORITES</h3>
+                <select>
+                    <option>-- Select an Article --</option>
+                    <option>The luxury liner that sailed into a hurricane</option>
+                    <option>A professor claimed to be Native American. Did she know she wasn't?</option>
+                    <option>Kanye West bought an architectural treasure—then gave it a violent remix</option>
+                </select>
+                
+                <div class="rating-options">
+                    <label><input type="radio" name="rating" value="1"> 1</label>
+                    <label><input type="radio" name="rating" value="2"> 2</label>
+                    <label><input type="radio" name="rating" value="3"> 3</label>
+                    <label><input type="radio" name="rating" value="4"> 4</label>
+                    <label><input type="radio" name="rating" value="5"> 5</label>
+                </div>
+                
+                <button id="submitRatingBtn">Submit Rating</button>
+                <p id="ratingConfirmation" style="display:none; margin-top:10px;">Thank you for your rating!</p>
+            </article>
+        </main>
+        
+        <footer>
+            <p>"YouTube comments are the folk art of our time" • Last Updated: <span id="currentDate"></span></p>
+        </footer>
+    </div>
+    
+    
+    <div class="comment-slider" id="commentSlider">
+        <div class="comment-container">
+            <button class="close-btn" id="closeCommentsBtn">×</button>
+            <div id="commentDisplay">
+                <h3 id="commentTitle">Comment 1</h3>
+                <p id="commentText">Loading comment...</p>
+            </div>
+            
+            <div class="comment-indicators" id="commentIndicators">
+                
+            </div>
+            
+            <div class="comment-nav">
+                <button id="prevCommentBtn">Previous</button>
+                <button id="nextCommentBtn">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        
+        const comments = [
+            {
+                title: "Comment 1",
+                content: '"Now I\'m on the other side guys, love is beautiful," reads one comment, on "Poison Oak," by Bright Eyes.'
+            },
+            {
+                title: "Comment 2",
+                content: '"sitting in Union Station at the end of summer and realizing that everything is going to change very soon," on "Friendships and Love," by Rocketship.'
+            },
+            {
+                title: "Comment 3",
+                content: '"The same guy who has loved me since I was 16 years old dedicated this song to me. I\'m 43 now and no one will ever love me or understand me the way he does," someone writes about "Pictures of You," by the Cure.'
+            }
+        ];
+        
+        const commentSlider = document.getElementById('commentSlider');
+        const commentTitle = document.getElementById('commentTitle');
+        const commentText = document.getElementById('commentText');
+        const commentIndicators = document.getElementById('commentIndicators');
+        const viewCommentsBtn = document.getElementById('viewCommentsBtn');
+        const closeCommentsBtn = document.getElementById('closeCommentsBtn');
+        const prevCommentBtn = document.getElementById('prevCommentBtn');
+        const nextCommentBtn = document.getElementById('nextCommentBtn');
+        const submitRatingBtn = document.getElementById('submitRatingBtn');
+        const ratingConfirmation = document.getElementById('ratingConfirmation');
+        
+        let currentCommentIndex = 0;
+        
+        function initCommentIndicators() {
+            commentIndicators.innerHTML = '';
+            
+            comments.forEach((comment, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = 'comment-indicator';
+                if (index === currentCommentIndex) {
+                    indicator.classList.add('active');
+                }
+                
+                indicator.addEventListener('click', () => {
+                    showComment(index);
+                });
+                
+                commentIndicators.appendChild(indicator);
+            });
+        }
+        
+        function showComment(index) {
+            currentCommentIndex = index;
+            const comment = comments[index];
+            
+            commentTitle.textContent = comment.title;
+            commentText.textContent = comment.content;
+            const indicators = document.querySelectorAll('.comment-indicator');
+            indicators.forEach((indicator, i) => {
+                if (i === index) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        viewCommentsBtn.addEventListener('click', () => {
+            commentSlider.classList.add('active');
+            initCommentIndicators();
+            showComment(0);
+        });
+        
+        closeCommentsBtn.addEventListener('click', () => {
+            commentSlider.classList.remove('active');
+        });
+        
+        prevCommentBtn.addEventListener('click', () => {
+            currentCommentIndex = (currentCommentIndex - 1 + comments.length) % comments.length;
+            showComment(currentCommentIndex);
+        });
+        
+        nextCommentBtn.addEventListener('click', () => {
+            currentCommentIndex = (currentCommentIndex + 1) % comments.length;
+            showComment(currentCommentIndex);
+        });
+        
+        submitRatingBtn.addEventListener('click', () => {
+            const selectedRating = document.querySelector('input[name="rating"]:checked');
+            if (selectedRating) {
+                ratingConfirmation.style.display = 'block';
+                setTimeout(() => {
+                    ratingConfirmation.style.display = 'none';
+                }, 3000);
+            }
+        });
+        
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
+    </script>
 </body>
 </html>

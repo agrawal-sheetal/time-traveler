@@ -1,179 +1,147 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>YouTube Comments as Art - The New Yorker</title>
-<style type="text/css">
-
-body {
-    background-color: #DDD;
-    color: #333;
-    font-family: "Lucida Grande", Verdana, sans-serif;
-    margin: 0;
-    padding: 20px;
+<title>YouTube Comments as Art - Photoshop 1.0 Style</title>
+<script>
+function showComment(commentId) {
+    document.getElementById(commentId).style.display = 'block';
 }
-
-#container {
-    width: 700px;
-    margin: 0 auto;
-    background: #FFF;
-    border: 1px solid #999;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 20px;
+function hideComment(commentId) {
+    document.getElementById(commentId).style.display = 'none';
 }
-
-.title-bar {
-    background: linear-gradient(to bottom, #6D84A2, #3B5998);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px 8px 0 0;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.content {
-    padding: 15px;
-    line-height: 1.5;
-}
-
-.quote-box {
-    background-color: #F5F5F5;
-    border-left: 4px solid #6D84A2;
-    padding: 10px;
-    margin: 15px 0;
-    font-style: italic;
-}
-
-.comment {
-    background-color: #F0F7FF;
-    border: 1px solid #D1E0F0;
-    padding: 8px 12px;
-    margin: 10px 0;
-    border-radius: 5px;
-}
-
-.section-title {
-    color: #3B5998;
-    border-bottom: 1px solid #D1E0F0;
-    padding-bottom: 5px;
-    margin-top: 20px;
-}
-
-.favorites {
-    background-color: #F5F5F5;
-    border: 1px solid #DDD;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.select-box {
-    background-color: white;
-    border: 1px solid #999;
-    padding: 5px;
-    font-family: "Lucida Grande", Verdana, sans-serif;
-    border-radius: 4px;
-    width: 100%;
-    margin: 5px 0;
-}
-
-.button {
-    background: linear-gradient(to bottom, #F9F9F9, #E0E0E0);
-    border: 1px solid #999;
-    padding: 5px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: "Lucida Grande", Verdana, sans-serif;
-}
-
-.button:hover {
-    background: linear-gradient(to bottom, #E0E0E0, #D0D0D0);
-}
-
-.marquee {
-    background-color: #3B5998;
-    color: white;
-    padding: 8px;
-    border-radius: 0 0 8px 8px;
-    margin-top: 20px;
-    font-size: 12px;
-}
-</style>
-<script type="text/javascript">
-function toggleComment(id) {
-    var el = document.getElementById(id);
-    if (el.style.display == 'none') {
-        el.style.display = 'block';
-    } else {
-        el.style.display = 'none';
+function submitRating() {
+    var selectedRating = document.querySelector('input[name="rating"]:checked');
+    if (selectedRating) {
+        document.getElementById('ratingValue').innerText = selectedRating.nextElementSibling.textContent;
+        document.getElementById('ratingConfirmation').style.display = 'block';
     }
 }
 </script>
 </head>
-<body>
-
-<div id="container">
-    <div class="title-bar">TURNING YOUTUBE COMMENTS INTO ART</div>
-    
-    <div class="content">
-        <p><i>By Max Norman | November 23, 2022</i></p>
-        
-        <p>Chiara Amisola took a close look at the stories and revelations that people leave below online videos.</p>
-        
-        <p>If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt. It's our externalized memory—in the never-fading photographs on Instagram or Facebook, in the dangerously searchable chats, the indelible e-mails, or in our improbably granular Uber and Venmo histories.</p>
-        
-        <div class="quote-box">
-            "The YouTube comments section is 'one of the last sacred spaces of the internet.' In contrast to the hypercuration of the social-media profile, anything goes in the comments." — Chiara Amisola
-        </div>
-        
-        <h3 class="section-title">ART PROJECT: THE SOUND OF LOVE</h3>
-        
-        <p>Thesoundof.love, a "web experience" Amisola created this past Valentine's Day, explores "the rawness of human intimacy and confession in the YouTube comments left under love songs." The page is minimal: each comment appears in large black text above the video in question, which plays inside a small circle that rotates like an LP.</p>
-        
-        <h3 class="section-title">NOTABLE COMMENTS</h3>
-        
-        <a href="javascript:toggleComment('comment1')" class="button">Show Comment 1</a>
-        <div id="comment1" class="comment" style="display:none">
-            "Now I'm on the other side guys, love is beautiful," reads one comment, on "Poison Oak," by Bright Eyes.
-        </div>
-        
-        <a href="javascript:toggleComment('comment2')" class="button">Show Comment 2</a>
-        <div id="comment2" class="comment" style="display:none">
-            "sitting in Union Station at the end of summer and realizing that everything is going to change very soon," on "Friendships and Love," by Rocketship.
-        </div>
-        
-        <a href="javascript:toggleComment('comment3')" class="button">Show Comment 3</a>
-        <div id="comment3" class="comment" style="display:none">
-            "The same guy who has loved me since I was 16 years old dedicated this song to me. I'm 43 now and no one will ever love me or understand me the way he does," someone writes about "Pictures of You," by the Cure.
-        </div>
-        
-        <h3 class="section-title">THE PHILOSOPHY BEHIND IT</h3>
-        
-        <p>The Internet's archives of human emotion prove the grand community of experience on a scale that, even a couple of generations ago, was unthinkable: even in the far reaches of YouTube comments, the most throwaway of online forms, we can find a record of the millions of private memories and feelings that flood our world like invisible radio waves.</p>
-        
-        <div class="favorites">
-            <h3>NEW YORKER FAVORITES</h3>
-            <select class="select-box">
-                <option>-- Select an Article --</option>
-                <option>The luxury liner that sailed into a hurricane</option>
-                <option>A professor claimed to be Native American. Did she know she wasn't?</option>
-                <option>Kanye West bought an architectural treasure—then gave it a violent remix</option>
-            </select>
-            <p>
-                <input type="radio" name="rating" id="rate1"><label for="rate1">1</label>
-                <input type="radio" name="rating" id="rate2"><label for="rate2">2</label>
-                <input type="radio" name="rating" id="rate3"><label for="rate3">3</label>
-                <input type="radio" name="rating" id="rate4"><label for="rate4">4</label>
-                <input type="radio" name="rating" id="rate5"><label for="rate5">5</label>
-            </p>
-        </div>
-        
-        <div class="marquee">
-            "YouTube comments are the folk art of our time" • Last Updated: <script>document.write(new Date().toLocaleDateString());</script>
-        </div>
+<body bgcolor="#C0C0C0" text="#000000" link="#0000FF" vlink="#0000FF" alink="#FF0000" style="font-family:'Chicago', 'Geneva', sans-serif; margin:0; padding:0;">
+<div style="position:relative; left:0; top:0; width:100%; height:100%; border:2px solid #000000; background:#C0C0C0; padding:0; box-sizing:border-box;">
+  <div style="background:#000080; color:white; padding:4px 4px; font-weight:bold; border-bottom:2px solid #000000;">
+    YouTube Comments as Art
+    <div style="float:right; font-family:monospace;">□ ×</div>
+  </div>
+  
+  <div style="background:#C0C0C0; border-bottom:1px solid #808080; padding:4px 2px; width:100%;">
+    <b><a href="../index.html" style="color:#000000; text-decoration:none;">Home</a></b>  
+    <b><a href="../1990s/index.html" style="color:#000000; text-decoration:none;">1990</a></b>  
+    <b><a href="../2000s/index.html" style="color:#000000; text-decoration:none;">2000</a></b>  
+    <b><a href="../2010s/index.html" style="color:#000000; text-decoration:none;">2010</a></b>
+  </div>
+  <div style="display:flex; height:calc(100% - 60px);">
+    <div style="width:80px; background:#C0C0C0; border-right:1px solid #808080; padding:4px; overflow-y:auto;">
+      <!-- Marquee Tool -->
+      <div style="border:1px solid #808080; width:24px; height:24px; margin:4px auto; background:#FFFFFF; text-align:center;">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNNSw1IEgxOSBMMTksMTkgTDUsMTkgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1kYXNoYXJyYXk9IjQsMiIvPjwvc3ZnPg==">
+      </div>
+      <!-- Lasso Tool -->
+      <div style="border:1px solid #808080; width:24px; height:24px; margin:4px auto; background:#FFFFFF; text-align:center;">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMTIsNSBDMTYsMTAgMTYsMTQgMTIsMTkgQzgsMTQgOCwxMCAxMiw1IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+">
+      </div>
+      <!-- Magic Wand -->
+      <div style="border:1px solid #808080; width:24px; height:24px; margin:4px auto; background:#FFFFFF; text-align:center;">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMTIsMyBMMTIsNyBMMTYsNyBMMTYsMyBMMTIsMyBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik0zLDEyIEw3LDEyIEw3LDE2IEwzLDE2IEwzLDEyIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTEyLDE3IEwxMiwyMSBMMTYsMjEgTDE2LDE3IEwxMiwxNyBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik0xNywxMiBMMjEsMTIgTDIxLDE2IEwxNywxNiBMMTcsMTIgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=">
+      </div>
+      <!-- Paint Bucket -->
+      <div style="border:1px solid #808080; width:24px; height:24px; margin:4px auto; background:#FFFFFF; text-align:center;">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMTIsMyBMMiwxMyBMMTIsMjMgTDIyLDEzIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTEyLDcgTDEyLDE5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik03LDEyIEwxNywxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=">
+      </div>
+      <!-- Type Tool -->
+      <div style="border:1px solid #808080; width:24px; height:24px; margin:4px auto; background:#FFFFFF; text-align:center;">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNNSw5IEgxOSBMMTksMTEgTDUsMTEgWiIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik03LDEzIEgxNyBMMTcsMjEgTDEzLDIxIEwxMywxNSBMMTEsMTUgTDExLDIxIEw3LDIxIFoiIGZpbGw9IiMwMDAiLz48L3N2Zz4=">
+      </div>
     </div>
+    
+    <div style="flex:1; padding:10px; overflow:auto; background:#FFFFFF; border-left:1px solid #808080;">
+      <h3 style="border-bottom:1px solid #000000; padding-bottom:4px;">By Max Norman | November 23, 2022</h3>
+      
+      <p>Chiara Amisola took a close look at the stories and revelations that people leave below online videos.</p>
+      
+      <p>If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt. It's our externalized memory—in the never-fading photographs on Instagram or Facebook, in the dangerously searchable chats, the indelible e-mails, or in our improbably granular Uber and Venmo histories.</p>
+      
+      <div style="border-left:4px solid #000080; background:#E0E0E0; padding:4px; margin:10px 0;">
+        <i>"The YouTube comments section is 'one of the last sacred spaces of the internet.' In contrast to the hypercuration of the social-media profile, anything goes in the comments." — Chiara Amisola</i>
+      </div>
+      
+      <h3 style="color:#000080;">ART PROJECT: THE SOUND OF LOVE</h3>
+      
+      <p>Thesoundof.love, a "web experience" Amisola created this past Valentine's Day, explores "the rawness of human intimacy and confession in the YouTube comments left under love songs." The page is minimal: each comment appears in large black text above the video in question, which plays inside a small circle that rotates like an LP.</p>
+      
+      <h3 style="color:#000080;">NOTABLE COMMENTS</h3>
+      
+      <div style="background:#E0E0E0; border:1px solid #808080; padding:4px; margin:4px 0; display:flex; gap:10px;">
+        <button onclick="showComment('comment1')" style="background:#C0C0C0; border:1px solid #808080; padding:4px 10px; font-family:'Chicago', 'Geneva', sans-serif;">Comment 1</button>
+        <button onclick="showComment('comment2')" style="background:#C0C0C0; border:1px solid #808080; padding:4px 10px; font-family:'Chicago', 'Geneva', sans-serif;">Comment 2</button>
+        <button onclick="showComment('comment3')" style="background:#C0C0C0; border:1px solid #808080; padding:4px 10px; font-family:'Chicago', 'Geneva', sans-serif;">Comment 3</button>
+      </div>
+      
+      <h3 style="color:#000080;">THE PHILOSOPHY BEHIND IT</h3>
+      
+      <p>The Internet's archives of human emotion prove the grand community of experience on a scale that, even a couple of generations ago, was unthinkable: even in the far reaches of YouTube comments, the most throwaway of online forms, we can find a record of the millions of private memories and feelings that flood our world like invisible radio waves.</p>
+      
+      <div style="background:#E0E0E0; border:1px solid #808080; padding:16px; border-radius:8px; margin-top:20px;">
+        <h3>NEW YORKER FAVORITES</h3>
+        <select style="width:100%; margin-bottom:10px; background:white; border:1px solid #999; padding:4px;">
+          <option>-- Select an Article --</option>
+          <option>The luxury liner that sailed into a hurricane</option>
+          <option>A professor claimed to be Native American. Did she know she wasn't?</option>
+          <option>Kanye West bought an architectural treasure—then gave it a violent remix</option>
+        </select>
+        <p>
+          <input type="radio" name="rating" id="rate1"><label for="rate1">1</label>
+          <input type="radio" name="rating" id="rate2"><label for="rate2">2</label>
+          <input type="radio" name="rating" id="rate3"><label for="rate3">3</label>
+          <input type="radio" name="rating" id="rate4"><label for="rate4">4</label>
+          <input type="radio" name="rating" id="rate5"><label for="rate5">5</label>
+        </p>
+        <button onclick="submitRating()" style="background:#C0C0C0; border:1px solid #808080; padding:4px 10px; margin-bottom: 20px; font-family:'Chicago', 'Geneva', sans-serif;">Submit Rating</button>
+      </div>
+    </div>
+  </div>
+  <div style="background:#C0C0C0; border-top:1px solid #808080; padding:2px 4px; font-size:smaller; position:absolute; bottom:0; width:100%;">
+    "YouTube comments are the folk art of our time" • Last Updated: <script>document.write(new Date().toLocaleDateString());</script>
+  </div>
 </div>
-
+<div id="comment1" style="position:absolute; left:140px; top:140px; width:240px; border:2px solid #000000; background:#C0C0C0; display:none;">
+  <div style="background:#000080; color:white; padding:2px 4px; font-weight:bold; border-bottom:2px solid #000000;">
+    Comment 1
+    <div style="float:right; font-family:monospace;"><a href="javascript:hideComment('comment1')" style="color:white; text-decoration:none;">×</a></div>
+  </div>
+  <div style="padding:10px; background:#FFFFFF; height:100px; overflow:auto;">
+    "Now I'm on the other side guys, love is beautiful," reads one comment, on "Poison Oak," by Bright Eyes.
+  </div>
+</div>
+<div id="comment2" style="position:absolute; left:160px; top:160px; width:240px; border:2px solid #000000; background:#C0C0C0; display:none;">
+  <div style="background:#000080; color:white; padding:2px 4px; font-weight:bold; border-bottom:2px solid #000000;">
+    Comment 2
+    <div style="float:right; font-family:monospace;"><a href="javascript:hideComment('comment2')" style="color:white; text-decoration:none;">×</a></div>
+  </div>
+  <div style="padding:10px; background:#FFFFFF; height:100px; overflow:auto;">
+    "sitting in Union Station at the end of summer and realizing that everything is going to change very soon," on "Friendships and Love," by Rocketship.
+  </div>
+</div>
+<div id="comment3" style="position:absolute; left:180px; top:180px; width:240px; border:2px solid #000000; background:#C0C0C0; display:none;">
+  <div style="background:#000080; color:white; padding:2px 4px; font-weight:bold; border-bottom:2px solid #000000;">
+    Comment 3
+    <div style="float:right; font-family:monospace;"><a href="javascript:hideComment('comment3')" style="color:white; text-decoration:none;">×</a></div>
+  </div>
+  <div style="padding:10px; background:#FFFFFF; height:120px; overflow:auto;">
+    "The same guy who has loved me since I was 16 years old dedicated this song to me. I'm 43 now and no one will ever love me or understand me the way he does," someone writes about "Pictures of You," by the Cure.
+  </div>
+</div>
+<div id="ratingConfirmation" style="position:absolute; left:200px; top:200px; width:240px; border:2px solid #000000; background:#C0C0C0; display:none;">
+  <div style="background:#000080; color:white; padding:2px 4px; font-weight:bold; border-bottom:2px solid #000000;">
+    Rating Submitted
+    <div style="float:right; font-family:monospace;"><a href="javascript:hideComment('ratingConfirmation')" style="color:white; text-decoration:none;">×</a></div>
+  </div>
+  <div style="padding:10px; background:#FFFFFF; height:100px; overflow:auto;">
+    <p>Thank you for your rating!</p>
+    <p>You rated this article: <span id="ratingValue" style="font-weight:bold;">5</span> stars</p>
+    <button onclick="hideComment('ratingConfirmation')" style="background:#C0C0C0; border:1px solid #808080; padding:4px 10px; font-family:'Chicago', 'Geneva', sans-serif; margin-top:10px;">OK</button>
+  </div>
+</div>
 </body>
 </html>
