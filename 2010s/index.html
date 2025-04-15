@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Comments as Art - Modern Design</title>
+    <title>YouTube Comments as Art</title>
     <style>
+    
         :root {
             --primary-color: #333;
             --secondary-color: #555;
@@ -13,6 +14,8 @@
             --dark-gray: #888;
             --white: #fff;
             --black: #000;
+            --section-spacing: 2rem;
+            --content-padding: 1.5rem;
         }
         
         * {
@@ -25,8 +28,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--primary-color);
-            background-color: var(--light-gray);
-            padding: 20px;
+            background: linear-gradient(135deg, #e8e8e8 0%, #f8f8f8 100%);
+            min-height: 100vh;
+            padding: var(--section-spacing);
         }
         
         .container {
@@ -36,7 +40,7 @@
                 "nav"
                 "main"
                 "footer";
-            gap: 20px;
+            gap: var(--section-spacing);
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -45,161 +49,212 @@
             grid-area: header;
             background: var(--primary-color);
             color: var(--white);
-            padding: 20px;
+            padding: var(--content-padding);
             text-align: center;
             border-radius: 8px;
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.1),
+                inset 0 -2px 4px rgba(0,0,0,0.3),
+                0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 0.5rem;
         }
         
         nav {
             grid-area: nav;
             background: var(--secondary-color);
             border-radius: 8px;
+            width: 100%;
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.1),
+                inset 0 -2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
         }
         
         main {
             grid-area: main;
             display: grid;
-            gap: 20px;
+            gap: var(--section-spacing);
         }
         
         footer {
             grid-area: footer;
             background: var(--primary-color);
             color: var(--white);
-            padding: 15px;
+            padding: var(--content-padding);
             text-align: center;
             border-radius: 8px;
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.1),
+                inset 0 -2px 4px rgba(0,0,0,0.3);
+            margin-top: 1rem;
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-            padding: 10px;
-            justify-content: center;
+            justify-content: space-around;
+            padding: 1rem;
             flex-wrap: wrap;
         }
         
         .nav-links li {
-            margin: 0 10px;
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
+            margin: 0.5rem 0;
         }
         
         .nav-links a {
             color: var(--white);
             text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+            display: block;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%);
+            box-shadow: 
+                inset 0 1px 2px rgba(255,255,255,0.2),
+                inset 0 -1px 2px rgba(0,0,0,0.2);
         }
         
         .nav-links a:hover {
-            background-color: var(--dark-gray);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.2) 100%);
         }
         
         .content-block {
             background: var(--white);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid var(--medium-gray);
+            border-radius: 10px;
+            padding: var(--content-padding);
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.8),
+                inset 0 -2px 4px rgba(0,0,0,0.1),
+                0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            margin-bottom: 1rem;
         }
         
         .content-block:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left-color: var(--primary-color);
+            box-shadow: 
+                inset 0 2px 6px rgba(255,255,255,0.8),
+                inset 0 -2px 6px rgba(0,0,0,0.1),
+                0 4px 8px rgba(0,0,0,0.15);
         }
         
         .quote {
-            background: var(--light-gray);
-            border-left: 4px solid var(--dark-gray);
-            padding: 20px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e5e5e5 100%);
+            border-left: 5px solid var(--dark-gray);
+            padding: var(--content-padding);
             font-style: italic;
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.8),
+                inset 0 -2px 4px rgba(0,0,0,0.1);
+            margin: 1.5rem 0;
         }
         
         .comment-slider {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        
-        .comment-slider.active {
-            opacity: 1;
-            pointer-events: all;
+            background: var(--white);
+            border-radius: 10px;
+            padding: var(--content-padding);
+            margin: 2rem 0;
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.8),
+                inset 0 -2px 4px rgba(0,0,0,0.1);
+            position: relative;
         }
         
         .comment-container {
-            background: var(--white);
-            width: 90%;
-            max-width: 600px;
-            border-radius: 8px;
-            padding: 30px;
             position: relative;
+            min-height: 180px;
+            padding: 1rem;
         }
         
         .comment-nav {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 1.5rem;
+            gap: 1rem;
         }
         
         .comment-indicators {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
         }
         
         .comment-indicator {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: var(--medium-gray);
             border-radius: 50%;
             cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 
+                inset 0 1px 3px rgba(0,0,0,0.2),
+                0 1px 1px rgba(255,255,255,0.8);
         }
         
         .comment-indicator.active {
             background: var(--primary-color);
+            box-shadow: 
+                inset 0 1px 3px rgba(0,0,0,0.4),
+                0 1px 1px rgba(255,255,255,0.8);
         }
         
         select, button {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid var(--medium-gray);
-            border-radius: 4px;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border: none;
+            border-radius: 6px;
             font-family: inherit;
+            box-shadow: 
+                inset 0 2px 3px rgba(255,255,255,0.8),
+                inset 0 -2px 3px rgba(0,0,0,0.1);
         }
         
         button {
-            background: var(--primary-color);
+            background: linear-gradient(to bottom, #555, #444);
             color: var(--white);
-            border: none;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+            box-shadow: 
+                inset 0 2px 3px rgba(255,255,255,0.2),
+                inset 0 -2px 3px rgba(0,0,0,0.3);
+            font-weight: bold;
+            padding: 1rem;
+            margin: 1.5rem 0 1rem;
         }
         
         button:hover {
-            background: var(--secondary-color);
+            background: linear-gradient(to bottom, #666, #555);
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.2),
+                inset 0 -2px 4px rgba(0,0,0,0.4);
         }
         
         .rating-options {
             display: flex;
             justify-content: space-between;
-            margin: 15px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .rating-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
         }
         
         @media (min-width: 768px) {
+            :root {
+                --section-spacing: 2.5rem;
+                --content-padding: 2rem;
+            }
+            
             main {
                 grid-template-columns: 1fr 1fr;
             }
@@ -207,15 +262,32 @@
             .wide-block {
                 grid-column: span 2;
             }
+            
+            .comment-slider {
+                grid-column: span 2;
+            }
         }
         
         @media (min-width: 1024px) {
+            :root {
+                --section-spacing: 3rem;
+            }
+            
             main {
                 grid-template-columns: repeat(3, 1fr);
             }
             
             .wide-block {
                 grid-column: span 3;
+            }
+            
+            .comment-slider {
+                grid-column: span 3;
+                padding: 2.5rem;
+            }
+            
+            .content-block {
+                padding: 2rem;
             }
         }
     </style>
@@ -238,7 +310,11 @@
         <main>
             <article class="content-block">
                 <h3>By Max Norman | November 23, 2022</h3>
-                <p>Chiara Amisola took a close look at the stories and revelations that people leave below online videos. If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt.</p>
+                <p>Chiara Amisola took a close look at the stories and revelations that people leave below online videos.</p>
+            </article>
+            
+            <article class="content-block">
+                <p>If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt.</p>
             </article>
             
             <article class="content-block quote">
@@ -250,10 +326,23 @@
                 <p>Thesoundof.love, a "web experience" Amisola created this past Valentine's Day, explores "the rawness of human intimacy and confession in the YouTube comments left under love songs." The page is minimal: each comment appears in large black text above the video in question, which plays inside a small circle that rotates like an LP.</p>
             </article>
             
-            <article class="content-block">
+            <section class="content-block wide-block comment-slider">
                 <h3>NOTABLE COMMENTS</h3>
-                <button id="viewCommentsBtn">View Comments</button>
-            </article>
+                <div class="comment-container">
+                    <div id="commentDisplay">
+                        <h4 id="commentTitle">Comment 1</h4>
+                        <p id="commentText">Loading comments...</p>
+                    </div>
+                    
+                    <div class="comment-indicators" id="commentIndicators">
+                    </div>
+                    
+                    <div class="comment-nav">
+                        <button id="prevCommentBtn">Previous</button>
+                        <button id="nextCommentBtn">Next</button>
+                    </div>
+                </div>
+            </section>
             
             <article class="content-block wide-block">
                 <h3>THE PHILOSOPHY BEHIND IT</h3>
@@ -278,7 +367,7 @@
                 </div>
                 
                 <button id="submitRatingBtn">Submit Rating</button>
-                <p id="ratingConfirmation" style="display:none; margin-top:10px;">Thank you for your rating!</p>
+                <p id="ratingConfirmation" style="display:none; margin-top:1.5rem;">Thank you for your rating!</p>
             </article>
         </main>
         
@@ -287,28 +376,7 @@
         </footer>
     </div>
     
-    
-    <div class="comment-slider" id="commentSlider">
-        <div class="comment-container">
-            <button class="close-btn" id="closeCommentsBtn">×</button>
-            <div id="commentDisplay">
-                <h3 id="commentTitle">Comment 1</h3>
-                <p id="commentText">Loading comment...</p>
-            </div>
-            
-            <div class="comment-indicators" id="commentIndicators">
-                
-            </div>
-            
-            <div class="comment-nav">
-                <button id="prevCommentBtn">Previous</button>
-                <button id="nextCommentBtn">Next</button>
-            </div>
-        </div>
-    </div>
-    
     <script>
-        
         const comments = [
             {
                 title: "Comment 1",
@@ -324,19 +392,15 @@
             }
         ];
         
-        const commentSlider = document.getElementById('commentSlider');
         const commentTitle = document.getElementById('commentTitle');
         const commentText = document.getElementById('commentText');
         const commentIndicators = document.getElementById('commentIndicators');
-        const viewCommentsBtn = document.getElementById('viewCommentsBtn');
-        const closeCommentsBtn = document.getElementById('closeCommentsBtn');
         const prevCommentBtn = document.getElementById('prevCommentBtn');
         const nextCommentBtn = document.getElementById('nextCommentBtn');
         const submitRatingBtn = document.getElementById('submitRatingBtn');
         const ratingConfirmation = document.getElementById('ratingConfirmation');
-        
         let currentCommentIndex = 0;
-        
+        let autoRotateInterval;
         function initCommentIndicators() {
             commentIndicators.innerHTML = '';
             
@@ -349,6 +413,7 @@
                 
                 indicator.addEventListener('click', () => {
                     showComment(index);
+                    resetAutoRotate();
                 });
                 
                 commentIndicators.appendChild(indicator);
@@ -358,7 +423,6 @@
         function showComment(index) {
             currentCommentIndex = index;
             const comment = comments[index];
-            
             commentTitle.textContent = comment.title;
             commentText.textContent = comment.content;
             const indicators = document.querySelectorAll('.comment-indicator');
@@ -371,24 +435,28 @@
             });
         }
         
-        viewCommentsBtn.addEventListener('click', () => {
-            commentSlider.classList.add('active');
-            initCommentIndicators();
-            showComment(0);
-        });
+        function startAutoRotate() {
+            autoRotateInterval = setInterval(() => {
+                currentCommentIndex = (currentCommentIndex + 1) % comments.length;
+                showComment(currentCommentIndex);
+            }, 5000);
+        }
         
-        closeCommentsBtn.addEventListener('click', () => {
-            commentSlider.classList.remove('active');
-        });
+        function resetAutoRotate() {
+            clearInterval(autoRotateInterval);
+            startAutoRotate();
+        }
         
         prevCommentBtn.addEventListener('click', () => {
             currentCommentIndex = (currentCommentIndex - 1 + comments.length) % comments.length;
             showComment(currentCommentIndex);
+            resetAutoRotate();
         });
         
         nextCommentBtn.addEventListener('click', () => {
             currentCommentIndex = (currentCommentIndex + 1) % comments.length;
             showComment(currentCommentIndex);
+            resetAutoRotate();
         });
         
         submitRatingBtn.addEventListener('click', () => {
@@ -401,7 +469,13 @@
             }
         });
         
-        document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
+            
+            initCommentIndicators();
+            showComment(0);
+            startAutoRotate();
+        });
     </script>
 </body>
 </html>
