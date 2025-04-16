@@ -4,291 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Comments as Art</title>
-    <style>
-    
-        :root {
-            --primary-color: #333;
-            --secondary-color: #555;
-            --light-gray: #f5f5f5;
-            --medium-gray: #ddd;
-            --dark-gray: #888;
-            --white: #fff;
-            --black: #000;
-            --section-spacing: 2rem;
-            --content-padding: 1.5rem;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--primary-color);
-            background: linear-gradient(135deg, #e8e8e8 0%, #f8f8f8 100%);
-            min-height: 100vh;
-            padding: var(--section-spacing);
-        }
-        
-        .container {
-            display: grid;
-            grid-template-areas:
-                "header"
-                "nav"
-                "main"
-                "footer";
-            gap: var(--section-spacing);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            grid-area: header;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 12px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 
-                inset 0 2px 4px rgba(255,255,255,0.1),
-                inset 0 -2px 4px rgba(0,0,0,0.3),
-                0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 0.5rem;
-            font-size: 12px;
-        }
-        
-        nav {
-            grid-area: nav;
-            background: var(--secondary-color);
-            border-radius: 8px;
-            width: 100%;
-            box-shadow: 
-                inset 0 -2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 12px;
-        }
-        
-        main {
-            grid-area: main;
-            display: grid;
-            gap: var(--section-spacing);
-        }
-        
-        footer {
-            grid-area: footer;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: var(--content-padding);
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 
-                inset 0 2px 4px rgba(255,255,255,0.1),
-                inset 0 -2px 4px rgba(0,0,0,0.3);
-            margin-top: 1rem;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            justify-content: space-around;
-            padding: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .nav-links li {
-            flex: 1;
-            text-align: center;
-            min-width: 120px;
-            margin: 8px;
-        }
-        
-        .nav-links a {
-            color: var(--white);
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.3s;
-            display: block;
-            font-weight: bold;
-            box-shadow: 
-                inset 0 1px 2px rgba(255,255,255,0.2),
-                inset 0 -1px 2px rgba(0,0,0,0.2);
-        }
-        
-        .nav-links a:hover {
-            background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.2) 100%);
-        }
-        
-        .content-block {
-            background: var(--white);
-            border-radius: 10px;
-            padding: var(--content-padding);
-            box-shadow: 
-                inset 0 2px 4px rgba(255,255,255,0.8),
-                inset 0 -2px 4px rgba(0,0,0,0.1),
-                0 2px 4px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            margin-bottom: 1rem;
-        }
-        
-        .content-block:hover {
-            box-shadow: 
-                inset 0 2px 6px rgba(255,255,255,0.8),
-                inset 0 -2px 6px rgba(0,0,0,0.1),
-                0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .quote {
-            background: linear-gradient(135deg, #f0f0f0 0%, #e5e5e5 100%);
-            border-left: 5px solid var(--dark-gray);
-            padding: var(--content-padding);
-            font-style: italic;
-            box-shadow: 
-                inset 0 2px 4px rgba(255,255,255,0.8),
-                inset 0 -2px 4px rgba(0,0,0,0.1);
-            margin: 1.5rem 0;
-        }
-        
-        .comment-slider {
-            background: var(--white);
-            border-radius: 10px;
-            padding: var(--content-padding);
-            margin: 2rem 0;
-            box-shadow: 
-                inset 0 2px 4px rgba(255,255,255,0.8),
-                inset 0 -2px 4px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .comment-container {
-            position: relative;
-            min-height: 180px;
-            padding: 1rem;
-        }
-        
-        .comment-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1.5rem;
-            gap: 1rem;
-        }
-        
-        .comment-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            margin: 1.5rem 0;
-        }
-        
-        .comment-indicator {
-            width: 14px;
-            height: 14px;
-            background: var(--medium-gray);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 
-                inset 0 1px 3px rgba(0,0,0,0.2),
-                0 1px 1px rgba(255,255,255,0.8);
-        }
-        
-        .comment-indicator.active {
-            background: var(--primary-color);
-            box-shadow: 
-                inset 0 1px 3px rgba(0,0,0,0.4),
-                0 1px 1px rgba(255,255,255,0.8);
-        }
-        
-        select, button {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 1rem 0;
-            border: none;
-            border-radius: 6px;
-            font-family: inherit;
-            box-shadow: 
-                inset 0 2px 3px rgba(255,255,255,0.8),
-                inset 0 -2px 3px rgba(0,0,0,0.1);
-        }
-        
-        button {
-            background: linear-gradient(to bottom, #555, #444);
-            color: var(--white);
-            cursor: pointer;
-            transition: all 0.3s;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
-            box-shadow: 
-                inset 0 2px 3px rgba(255,255,255,0.2),
-                inset 0 -2px 3px rgba(0,0,0,0.3);
-            font-weight: bold;
-            padding: 1rem;
-            margin: 1.5rem 0 1rem;
-        }
-        
-        button:hover {
-            background: linear-gradient(to bottom, #666, #555);
-            box-shadow: 
-                inset 0 2px 4px rgba(255,255,255,0.2),
-                inset 0 -2px 4px rgba(0,0,0,0.4);
-        }
-        
-        .rating-options {
-            display: flex;
-            justify-content: space-between;
-            margin: 1.5rem 0;
-        }
-        
-        .rating-options label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
-        
-        @media (min-width: 768px) {
-            :root {
-                --section-spacing: 2.5rem;
-                --content-padding: 2rem;
-            }
-            
-            main {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .wide-block {
-                grid-column: span 2;
-            }
-            
-            .comment-slider {
-                grid-column: span 2;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            :root {
-                --section-spacing: 3rem;
-            }
-            
-            main {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .wide-block {
-                grid-column: span 3;
-            }
-            
-            .comment-slider {
-                grid-column: span 3;
-                padding: 2.5rem;
-            }
-            
-            .content-block {
-                width:100%;
-                padding: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -309,63 +25,63 @@
             <article class="content-block">
                 <h3>By Max Norman | November 23, 2022</h3>
                 <p>Chiara Amisola took a close look at the stories and revelations that people leave below online videos.</p>
+                <p>If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt.</p>
+                <div class="quote">
+                    <p>"The YouTube comments section is 'one of the last sacred spaces of the internet.' In contrast to the hypercuration of the social-media profile, anything goes in the comments." — Chiara Amisola</p>
+                </div>
             </article>
             
             <article class="content-block">
-                <p>If written today, "In Search of Lost Time" might well be an Internet novel. The Web has become the first port of call in any search for what we've once seen or even felt.</p>
-            </article>
-            
-            <article class="content-block quote">
-                <p>"The YouTube comments section is 'one of the last sacred spaces of the internet.' In contrast to the hypercuration of the social-media profile, anything goes in the comments." — Chiara Amisola</p>
-            </article>
-            
-            <article class="content-block wide-block">
                 <h3>ART PROJECT: THE SOUND OF LOVE</h3>
                 <p>Thesoundof.love, a "web experience" Amisola created this past Valentine's Day, explores "the rawness of human intimacy and confession in the YouTube comments left under love songs." The page is minimal: each comment appears in large black text above the video in question, which plays inside a small circle that rotates like an LP.</p>
             </article>
             
-            <section class="content-block wide-block comment-slider">
-                <h3>NOTABLE COMMENTS</h3>
-                <div class="comment-container">
-                    <div id="commentDisplay">
-                        <h4 id="commentTitle">Comment 1</h4>
-                        <p id="commentText">Loading comments...</p>
+            <div class="side-by-side">
+                <!-- Integrated Comment Slider -->
+                <section class="comment-slider">
+                    <h3>NOTABLE COMMENTS</h3>
+                    <div class="comment-container">
+                        <div id="commentDisplay">
+                            <h4 id="commentTitle">Comment 1</h4>
+                            <p id="commentText">Loading comments...</p>
+                        </div>
+                        
+                        <div class="comment-indicators" id="commentIndicators">
+                            <!-- Indicators will be added by JavaScript -->
+                        </div>
+                        
+                        <div class="comment-nav">
+                            <button id="prevCommentBtn">Previous</button>
+                            <button id="nextCommentBtn">Next</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="rating-block">
+                    <h3>NEW YORKER FAVORITES</h3>
+                    <select>
+                        <option>-- Select an Article --</option>
+                        <option>The luxury liner that sailed into a hurricane</option>
+                        <option>A professor claimed to be Native American. Did she know she wasn't?</option>
+                        <option>Kanye West bought an architectural treasure—then gave it a violent remix</option>
+                    </select>
+                    
+                    <div class="rating-options">
+                        <label><input type="radio" name="rating" value="1"> 1</label>
+                        <label><input type="radio" name="rating" value="2"> 2</label>
+                        <label><input type="radio" name="rating" value="3"> 3</label>
+                        <label><input type="radio" name="rating" value="4"> 4</label>
+                        <label><input type="radio" name="rating" value="5"> 5</label>
                     </div>
                     
-                    <div class="comment-indicators" id="commentIndicators">
-                    </div>
-                    
-                    <div class="comment-nav">
-                        <button id="prevCommentBtn">Previous</button>
-                        <button id="nextCommentBtn">Next</button>
-                    </div>
-                </div>
-            </section>
-            
-            <article class="content-block wide-block">
-                <h3>THE PHILOSOPHY BEHIND IT</h3>
-                <p>The Internet's archives of human emotion prove the grand community of experience on a scale that, even a couple of generations ago, was unthinkable: even in the far reaches of YouTube comments, the most throwaway of online forms, we can find a record of the millions of private memories and feelings that flood our world like invisible radio waves.</p>
-            </article>
+                    <button id="submitRatingBtn">Submit Rating</button>
+                    <p id="ratingConfirmation" style="display:none; margin-top:1.5rem;">Thank you for your rating!</p>
+                </section>
+            </div>
             
             <article class="content-block">
-                <h3>NEW YORKER FAVORITES</h3>
-                <select>
-                    <option>-- Select an Article --</option>
-                    <option>The luxury liner that sailed into a hurricane</option>
-                    <option>A professor claimed to be Native American. Did she know she wasn't?</option>
-                    <option>Kanye West bought an architectural treasure—then gave it a violent remix</option>
-                </select>
-                
-                <div class="rating-options">
-                    <label><input type="radio" name="rating" value="1"> 1</label>
-                    <label><input type="radio" name="rating" value="2"> 2</label>
-                    <label><input type="radio" name="rating" value="3"> 3</label>
-                    <label><input type="radio" name="rating" value="4"> 4</label>
-                    <label><input type="radio" name="rating" value="5"> 5</label>
-                </div>
-                
-                <button id="submitRatingBtn">Submit Rating</button>
-                <p id="ratingConfirmation" style="display:none; margin-top:1.5rem;">Thank you for your rating!</p>
+                <h3>THE PHILOSOPHY BEHIND IT</h3>
+                <p>The Internet's archives of human emotion prove the grand community of experience on a scale that, even a couple of generations ago, was unthinkable: even in the far reaches of YouTube comments, the most throwaway of online forms, we can find a record of the millions of private memories and feelings that flood our world like invisible radio waves.</p>
             </article>
         </main>
         
@@ -374,106 +90,6 @@
         </footer>
     </div>
     
-    <script>
-        const comments = [
-            {
-                title: "Comment 1",
-                content: '"Now I\'m on the other side guys, love is beautiful," reads one comment, on "Poison Oak," by Bright Eyes.'
-            },
-            {
-                title: "Comment 2",
-                content: '"sitting in Union Station at the end of summer and realizing that everything is going to change very soon," on "Friendships and Love," by Rocketship.'
-            },
-            {
-                title: "Comment 3",
-                content: '"The same guy who has loved me since I was 16 years old dedicated this song to me. I\'m 43 now and no one will ever love me or understand me the way he does," someone writes about "Pictures of You," by the Cure.'
-            }
-        ];
-        
-        const commentTitle = document.getElementById('commentTitle');
-        const commentText = document.getElementById('commentText');
-        const commentIndicators = document.getElementById('commentIndicators');
-        const prevCommentBtn = document.getElementById('prevCommentBtn');
-        const nextCommentBtn = document.getElementById('nextCommentBtn');
-        const submitRatingBtn = document.getElementById('submitRatingBtn');
-        const ratingConfirmation = document.getElementById('ratingConfirmation');
-        let currentCommentIndex = 0;
-        let autoRotateInterval;
-        function initCommentIndicators() {
-            commentIndicators.innerHTML = '';
-            
-            comments.forEach((comment, index) => {
-                const indicator = document.createElement('div');
-                indicator.className = 'comment-indicator';
-                if (index === currentCommentIndex) {
-                    indicator.classList.add('active');
-                }
-                
-                indicator.addEventListener('click', () => {
-                    showComment(index);
-                    resetAutoRotate();
-                });
-                
-                commentIndicators.appendChild(indicator);
-            });
-        }
-        
-        function showComment(index) {
-            currentCommentIndex = index;
-            const comment = comments[index];
-            commentTitle.textContent = comment.title;
-            commentText.textContent = comment.content;
-            const indicators = document.querySelectorAll('.comment-indicator');
-            indicators.forEach((indicator, i) => {
-                if (i === index) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-        }
-        
-        function startAutoRotate() {
-            autoRotateInterval = setInterval(() => {
-                currentCommentIndex = (currentCommentIndex + 1) % comments.length;
-                showComment(currentCommentIndex);
-            }, 5000);
-        }
-        
-        function resetAutoRotate() {
-            clearInterval(autoRotateInterval);
-            startAutoRotate();
-        }
-        
-        prevCommentBtn.addEventListener('click', () => {
-            currentCommentIndex = (currentCommentIndex - 1 + comments.length) % comments.length;
-            showComment(currentCommentIndex);
-            resetAutoRotate();
-        });
-        
-        nextCommentBtn.addEventListener('click', () => {
-            currentCommentIndex = (currentCommentIndex + 1) % comments.length;
-            showComment(currentCommentIndex);
-            resetAutoRotate();
-        });
-        
-        submitRatingBtn.addEventListener('click', () => {
-            const selectedRating = document.querySelector('input[name="rating"]:checked');
-            if (selectedRating) {
-                ratingConfirmation.style.display = 'block';
-                setTimeout(() => {
-                    ratingConfirmation.style.display = 'none';
-                }, 3000);
-            }
-        });
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
-            
-            initCommentIndicators();
-            showComment(0);
-            startAutoRotate();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
