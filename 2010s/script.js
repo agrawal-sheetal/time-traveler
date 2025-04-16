@@ -1,4 +1,3 @@
-// Comments data
 const comments = [
     {
         title: "Comment 1",
@@ -14,20 +13,15 @@ const comments = [
     }
 ];
 
-// DOM Elements
 const commentTitle = document.getElementById('commentTitle');
 const commentText = document.getElementById('commentText');
 const commentIndicators = document.getElementById('commentIndicators');
-const prevCommentBtn = document.getElementById('prevCommentBtn');
-const nextCommentBtn = document.getElementById('nextCommentBtn');
 const submitRatingBtn = document.getElementById('submitRatingBtn');
 const ratingConfirmation = document.getElementById('ratingConfirmation');
 
-// Current comment index
 let currentCommentIndex = 0;
 let autoRotateInterval;
 
-// Initialize comment indicators
 function initCommentIndicators() {
     commentIndicators.innerHTML = '';
     
@@ -47,15 +41,12 @@ function initCommentIndicators() {
     });
 }
 
-// Show specific comment
 function showComment(index) {
     currentCommentIndex = index;
     const comment = comments[index];
     
     commentTitle.textContent = comment.title;
     commentText.textContent = comment.content;
-    
-    // Update indicators
     const indicators = document.querySelectorAll('.comment-indicator');
     indicators.forEach((indicator, i) => {
         if (i === index) {
@@ -66,7 +57,6 @@ function showComment(index) {
     });
 }
 
-// Auto-rotate comments
 function startAutoRotate() {
     autoRotateInterval = setInterval(() => {
         currentCommentIndex = (currentCommentIndex + 1) % comments.length;
@@ -74,24 +64,10 @@ function startAutoRotate() {
     }, 5000);
 }
 
-// Reset auto-rotate timer
 function resetAutoRotate() {
     clearInterval(autoRotateInterval);
     startAutoRotate();
 }
-
-// Event Listeners
-prevCommentBtn.addEventListener('click', () => {
-    currentCommentIndex = (currentCommentIndex - 1 + comments.length) % comments.length;
-    showComment(currentCommentIndex);
-    resetAutoRotate();
-});
-
-nextCommentBtn.addEventListener('click', () => {
-    currentCommentIndex = (currentCommentIndex + 1) % comments.length;
-    showComment(currentCommentIndex);
-    resetAutoRotate();
-});
 
 submitRatingBtn.addEventListener('click', () => {
     const selectedRating = document.querySelector('input[name="rating"]:checked');
@@ -101,7 +77,6 @@ submitRatingBtn.addEventListener('click', () => {
             ratingConfirmation.style.display = 'none';
         }, 3000);
     } else {
-        // Add shake animation to indicate selection is required
         submitRatingBtn.classList.add('shake');
         setTimeout(() => {
             submitRatingBtn.classList.remove('shake');
@@ -109,12 +84,8 @@ submitRatingBtn.addEventListener('click', () => {
     }
 });
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Set current date
     document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
-    
-    // Initialize comment slider
     initCommentIndicators();
     showComment(0);
     startAutoRotate();
